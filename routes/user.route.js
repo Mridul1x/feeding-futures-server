@@ -18,4 +18,5 @@ router.get("/", isAuthenticated, isAdmin, getAllUser);
 router.get("/:uid", isAuthenticated, getAnUser);
 router.patch("/:uid", isAuthenticated, isAdmin, updateUserRole);
 
+
 module.exports = router;
