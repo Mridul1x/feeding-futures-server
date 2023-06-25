@@ -1,7 +1,3 @@
-// POST /api/checkpost => create joining request(auth)
-// GET /api/checkpost => get all requests(auth, admin)
-// GET /api/checkpost/:checkId => get a request(auth, admin)
-
 const express = require("express");
 const { isAuthenticated } = require("../middlewares/auth.middleware");
 const { isAdmin } = require("../middlewares/admin.middleware");
