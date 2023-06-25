@@ -2,7 +2,7 @@ const express = require("express");
 const {
   loginUser,
   registerUser,
-  getAllUser,
+  getAllUsers,
   getAnUser,
   updateUserRole,
 } = require("../controllers/user.controller");
@@ -14,7 +14,7 @@ const router = express.Router();
 
 router.post("/login", loginUser);
 router.post("/rediter", registerUser);
-router.get("/", isAuthenticated, isAdmin, getAllUser);
+router.get("/", isAuthenticated, isAdmin, getAllUsers);
 router.get("/:uid", isAuthenticated, getAnUser);
 router.patch("/:uid", isAuthenticated, isAdmin, updateUserRole);
 
