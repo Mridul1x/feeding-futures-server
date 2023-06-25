@@ -3,6 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
+const userRoutes = require("./routes/user.route");
+
 const app = express();
 
 app.use(
@@ -11,9 +13,12 @@ app.use(
   })
 );
 app.use(express.json());
+
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome to Feeding Futures server!" });
 });
+
+app.use("./api/users", userRoutes);
 
 const port = process.env.PORT || 8080;
 const uri = process.env.MONGO_URI;
