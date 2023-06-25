@@ -3,8 +3,10 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
+/*Routes*/
 const userRoutes = require("./routes/user.route");
 const reviewRoutes = require("./routes/review.route");
+const providerRoutes = require("./routes/provider.route");
 
 /*Express App*/
 const app = express();
@@ -25,6 +27,7 @@ app.get("/", (req, res) => {
 /*Bypassed Apis*/
 app.use("./api/users", userRoutes);
 app.use("./api/reviews", reviewRoutes);
+app.use("./api/providers", providerRoutes);
 
 /*Variables*/
 const port = process.env.PORT || 8080;
