@@ -9,8 +9,8 @@ const {
 
 const router = express.Router();
 
-router.post("/", createJoiningRequest, isAuthenticated);
-router.get("/", getAllReqs, isAdmin);
-router.get("/:cid", getAReq, isAdmin);
+router.post("/", isAuthenticated, createJoiningRequest);
+router.get("/", isAdmin, getAllReqs);
+router.get("/:cid", isAdmin, getAReq);
 
 module.exports = router;

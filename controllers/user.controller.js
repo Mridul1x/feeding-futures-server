@@ -1,4 +1,4 @@
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 const { createToken } = require("../helpers/token.helper");
 const User = require("../models/user.model");
 
@@ -74,7 +74,7 @@ const updateUserRole = async (req, res) => {
       { new: true }
     );
 
-    res.send(200).json(updatedUser);
+    res.status(200).json(updatedUser);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

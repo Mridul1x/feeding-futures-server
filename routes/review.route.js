@@ -1,5 +1,4 @@
 const express = require("express");
-
 const router = express.Router();
 
 const { isAuthenticated } = require("../middlewares/auth.middleware");
@@ -11,6 +10,6 @@ const {
 
 router.get("/", getAllReviews);
 
-router.post("/:uid", isAuthenticated, createReview);
+router.post("/", isAuthenticated, createReview);
 
 module.exports = router;

@@ -10,9 +10,9 @@ const {
 
 const router = express.Router();
 
-router.post("/", createConsumer, isConsumerConnector, isAuthenticated);
-router.get("/", getAllConsumers, isConsumerConnector, isAuthenticated);
-router.get("/:cid", getConsumer, isConsumerConnector, isAuthenticated);
-router.post("/:cid", createConsumption, isConsumerConnector, isAuthenticated);
+router.post("/", isAuthenticated, isConsumerConnector, createConsumer);
+router.get("/", isAuthenticated, isConsumerConnector, getAllConsumers);
+router.get("/:cid", isAuthenticated, isConsumerConnector, getConsumer);
+router.post("/:cid", isAuthenticated, isConsumerConnector, createConsumption);
 
 module.exports = router;

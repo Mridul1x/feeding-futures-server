@@ -13,10 +13,9 @@ const { isAdmin } = require("../middlewares/admin.middleware");
 const router = express.Router();
 
 router.post("/login", loginUser);
-router.post("/rediter", registerUser);
+router.post("/register", registerUser);
 router.get("/", isAuthenticated, isAdmin, getAllUsers);
 router.get("/:uid", isAuthenticated, getAnUser);
 router.patch("/:uid", isAuthenticated, isAdmin, updateUserRole);
-
 
 module.exports = router;
