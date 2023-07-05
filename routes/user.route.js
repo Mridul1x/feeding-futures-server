@@ -6,7 +6,6 @@ const {
   getAnUser,
   updateUserRole,
 } = require("../controllers/user.controller");
-
 const { isAuthenticated } = require("../middlewares/auth.middleware");
 const { isAdmin } = require("../middlewares/admin.middleware");
 
