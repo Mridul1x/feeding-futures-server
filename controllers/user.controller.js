@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { createToken } = require("../helpers/token.helper");
 const User = require("../models/user.model");
+const Checkpost = require("../models/checkpost.model");
 
 const loginUser = async (req, res) => {
   try {
@@ -40,7 +41,7 @@ const registerUser = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find({});
+    const users = await User.find({}).sort({ createdAt: -1 });
     res.status(200).json(users);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -60,7 +61,7 @@ const getAnUser = async (req, res) => {
       throw new Error("Unauthorized access.");
     }
 
-    const user = await User.findById(uid);
+    const user = await User.findById(uid).populate("checkpost").exec();
     res.status(200).json(user);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -70,7 +71,7 @@ const getAnUser = async (req, res) => {
 const updateUserRole = async (req, res) => {
   try {
     const { uid } = req.params;
-    const { role } = req.body;
+    const { role, checkId, status } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(uid)) {
       throw new Error("User not found.");
@@ -82,7 +83,13 @@ const updateUserRole = async (req, res) => {
       { new: true }
     );
 
-    res.status(200).json(updatedUser);
+    const updatedCheckpost = await Checkpost.findByIdAndUpdate(
+      checkId,
+      { $set: { status } },
+      { new: true }
+    );
+
+    res.status(200).json({ updatedUser, updatedCheckpost });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

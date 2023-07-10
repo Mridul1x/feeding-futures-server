@@ -14,12 +14,12 @@ const checkpostRoutes = require("./routes/checkpost.route");
 const app = express();
 
 /*Middlewares*/
+app.use(express.json());
 app.use(
   cors({
     credentials: true,
   })
 );
-app.use(express.json());
 
 /*Test Api*/
 app.get("/", (req, res) => {
