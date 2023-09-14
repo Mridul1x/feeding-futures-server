@@ -7,7 +7,13 @@ const checkpostSchema = new mongoose.Schema(
       ref: "User",
     },
     choice: {
-      type: Number,
+      type: String,
+      required: true,
+    },
+    status: {
+      type: String,
+      enum: ["pending", "approved", "denied"],
+      default: "pending",
       required: true,
     },
   },
