@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const contributionSchema = new mongoose.Schema(
   {
+    provider: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Provider",
+    },
     name: {
       type: String,
       required: true,
@@ -9,10 +13,6 @@ const contributionSchema = new mongoose.Schema(
     amount: {
       type: Number,
       required: true,
-    },
-    provider: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Provider",
     },
   },
   {

@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const consumptionSchema = new mongoose.Schema(
   {
+    consumer: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Consumer",
+    },
     name: {
       type: String,
       required: true,
@@ -9,10 +13,6 @@ const consumptionSchema = new mongoose.Schema(
     amount: {
       type: Number,
       required: true,
-    },
-    consumer: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Consumer",
     },
   },
   {
