@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { createToken } = require("../helpers/token.helper");
-const User = require("../models/user.model");
+c
 const Checkpost = require("../models/checkpost.model");
 
 const loginUser = async (req, res) => {

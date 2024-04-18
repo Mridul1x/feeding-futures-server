@@ -26,7 +26,6 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome to Feeding Futures server!" });
 });
 
-/*Bypassed Apis*/
 app.use("/api/users", userRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/providers", providerRoutes);
